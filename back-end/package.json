@@ -1,33 +1,33 @@
 {
   "name": "graphql-server",
   "version": "1.0.0",
-  "description": "Full-Stack Theme Base GraphQL server.",
+  "description": "HTC GraphQL server.",
   "main": "index.js",
   "scripts": {
     "start": "cross-env NODE_ENV=production node index.js",
     "ssl": "cross-env NODE_ENV=development node index.js",
-    "watch": "nodemon index.js",
+    "watch": "cross-env NODE_ENV=development nodemon index.js",
     "start:test": "cross-env NODE_ENV=test node index.js ",
     "lint": "eslint ."
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "apollo-server": "^2.9.16",
-    "apollo-server-express": "^2.9.16",
+    "apollo-server": "^2.11.0",
+    "apollo-server-express": "^2.11.0",
     "body-parser": "^1.19.0",
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
-    "graphql": "^14.5.8",
-    "graphql-tools": "^4.0.6",
-    "mongoose": "^5.8.7",
+    "graphql": "^14.6.0",
+    "graphql-tools": "^4.0.7",
+    "mongoose": "^5.9.5",
     "subscriptions-transport-ws": "^0.9.16"
   },
   "devDependencies": {
-    "apollo": "^2.21.3",
-    "cross-env": "^6.0.3",
-    "eslint": "^6.7.0",
+    "apollo": "^2.25.0",
+    "cross-env": "^7.0.2",
+    "eslint": "^6.8.0",
     "nodemon": "^2.0.2",
     "prettier": "^1.19.1"
   }
