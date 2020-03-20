@@ -134,9 +134,7 @@ const InteractiveMap = props => {
               {places.map((item, index) => {
                 return (
                   <Marker position={[item.lat, item.lon]} key={index}>
-                    <Popup>
-                      <img src='img/logo512.png' alt='Huikee kuva' />
-                    </Popup>
+                    <Popup>{item.name}</Popup>
                   </Marker>
                 );
               })}
