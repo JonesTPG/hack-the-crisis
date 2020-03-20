@@ -1,37 +1,67 @@
 const { UserInputError, PubSub } = require('apollo-server');
+const bcrypt = require('bcryptjs');
 
-const Example = require('./models/example');
+const Order = require('./models/order');
+const Provider = require('./models/provider');
 
 const pubsub = new PubSub();
 
 const resolvers = {
   Query: {
-    example: () => {
-      return Example.find({});
+    orders: () => {
+      return Order.find({});
     }
   },
   Mutation: {
-    createExample: async (root, args) => {
-      let example = new Example({
-        field1: args.field1,
-        field2: args.field2
+    createOrder: async (root, args) => {
+      let order = new Order({
+        name: args.name,
+        phone: args.phone,
+        where: args.where,
+        when: args.when,
+        what: args.what
       });
-      await example.save().catch(error => {
+      await order.save().catch(error => {
+        throw new UserInputError(error.message, {
+          invalidArgs: args
+        });
+      });
+      pubsub.publish('NEW_ORDER', {
+        addedOrder: order
+      });
+
+      return order;
+    },
+    createProvider: async (root, args) => {
+      let password = args.password;
+      if (args.password == undefined) {
+        console.log('no password');
+        return;
+      }
+
+      const saltRounds = 10;
+      const passwordHash = await bcrypt.hash(password, saltRounds);
+
+      let provider = new Provider({
+        name: args.name,
+        phone: args.phone,
+        email: args.email,
+        password: args.password,
+        passwordHash: passwordHash
+      });
+
+      await provider.save().catch(error => {
         throw new UserInputError(error.message, {
           invalidArgs: args
         });
       });
 
-      pubsub.publish('EXAMPLE_ADDED', {
-        exampleAdded: example
-      });
-
-      return example;
+      return provider;
     }
   },
   Subscription: {
-    exampleAdded: {
-      subscribe: () => pubsub.asyncIterator(['EXAMPLE_ADDED'])
+    orderAdded: {
+      subscribe: () => pubsub.asyncIterator(['NEW_ORDER'])
     }
   }
 };
