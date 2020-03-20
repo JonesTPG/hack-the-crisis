@@ -9,23 +9,10 @@ const schema = new mongoose.Schema({
   phone: {
     type: Number,
     minlength: 6,
-    required: true,
-    unique: true
+    required: true
   },
   email: {
-    type: String,
-    unique: true
-  },
-  location: {
-    type: [Number],
-    minlength: 2,
-    maxlength: 2
-  },
-  products: {
-    type: [String]
-  },
-  services: {
-    type: [String]
+    type: String
   }
 });
 

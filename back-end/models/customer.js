@@ -9,10 +9,12 @@ const schema = new mongoose.Schema({
   phone: {
     type: Number,
     minlength: 6,
-    required: true,
-    unique: true
+    required: true
   },
   where: {
+    type: String
+  },
+  whereCoords: {
     type: [Number],
     minlength: 2,
     maxlength: 2
@@ -21,8 +23,10 @@ const schema = new mongoose.Schema({
     type: String
   },
   when: {
-    type: Date,
-    default: Date.now
+    type: String
+  },
+  whenOrdered: {
+    type: String
   }
 });
 

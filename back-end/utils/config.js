@@ -8,7 +8,7 @@ let GRAPHQL_ENDPOINT =
   process.env.GRAPHQL_ENDPOINT || 'http://localhost:4000/graphql';
 let GRAPHQL_SUBSCRIPTION_ENDPOINT =
   process.env.GRAPHQL_SUBSCRIPTION_ENDPOINT ||
-  'wss://localhost:4000/subscriptions';
+  'ws://localhost:4000/subscriptions';
 
 module.exports = {
   MONGODB_URI,
