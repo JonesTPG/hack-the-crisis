@@ -1,24 +1,17 @@
 import React from 'react';
-import logo from './logo.svg';
+import Typography from '@material-ui/core/Typography';
 import './App.css';
-import Map from './Map';
+import Map from './components/Map';
 
 const App = () => {
   return (
     <div className='App'>
       <header className='App-header'>
-        <img src={logo} className='App-logo' alt='logo' />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className='App-link'
-          href='https://reactjs.org'
-          target='_blank'
-          rel='noopener noreferrer'
-        >
-          Learn React
-        </a>
+        <Typography>
+          Tarvitsetko ruoka-apua tai haluatko auttaa heikommassa asemassa
+          olevia? Saat tarkempia tietoja ruoanjakelusta painamalla kartalla
+          näkyviä merkkejä.
+        </Typography>
         <Map />
       </header>
     </div>

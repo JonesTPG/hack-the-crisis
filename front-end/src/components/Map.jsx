@@ -4,6 +4,7 @@ import Paper from '@material-ui/core/Paper';
 import { Map, TileLayer, Marker, Popup, LayersControl } from 'react-leaflet';
 import { withStyles } from '@material-ui/core/styles';
 import './map.css';
+import MapMarker from './MapMarker';
 const { BaseLayer } = LayersControl;
 
 // Access token for Mapbox map layers
@@ -134,7 +135,9 @@ const InteractiveMap = props => {
               {places.map((item, index) => {
                 return (
                   <Marker position={[item.lat, item.lon]} key={index}>
-                    <Popup>{item.name}</Popup>
+                    <Popup>
+                      <MapMarker />
+                    </Popup>
                   </Marker>
                 );
               })}
