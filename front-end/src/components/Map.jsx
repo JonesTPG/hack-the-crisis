@@ -5,39 +5,8 @@ import { Map, TileLayer, Marker, Popup, LayersControl } from 'react-leaflet';
 import { withStyles } from '@material-ui/core/styles';
 import './map.css';
 import MapMarker from './MapMarker';
+import places from '../places.json';
 const { BaseLayer } = LayersControl;
-
-// Access token for Mapbox map layers
-const ACCESS_TOKEN =
-  'sk.eyJ1IjoibWFya3Vzcm9tYW4iLCJhIjoiY2s3OHEzNXh0MGhwczNsbnl5bm0zbWpjZSJ9.Yeq0LjbnbitSVkqHUH1cbg';
-
-const places = [
-  {
-    name: 'Eficode HQ',
-    lat: 60.169392,
-    lon: 24.925751
-  },
-  {
-    name: 'TUT',
-    lat: 61.44982,
-    lon: 23.85863
-  },
-  {
-    name: 'Kamppi',
-    lat: 60.168499,
-    lon: 24.93248
-  },
-  {
-    name: 'Oulu',
-    lat: 65.012093,
-    lon: 25.465076
-  },
-  {
-    name: 'Airport',
-    lat: 60.314707,
-    lon: 24.948027
-  }
-];
 
 const styles = theme => ({
   paper: {
@@ -52,10 +21,6 @@ const styles = theme => ({
   }
 });
 
-/**
- * @description An interactive map component that has multiple different layer options
- * @param {} props provides the different classes for the component
- */
 const InteractiveMap = props => {
   const { classes } = props;
 
@@ -75,15 +40,6 @@ const InteractiveMap = props => {
                   id='hsl-map'
                 />
               </BaseLayer>
-              <BaseLayer name='OpenStreetMap'>
-                <TileLayer
-                  attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-                  url='https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
-                  maxZoom={19}
-                  tileSize={512}
-                  zoomOffset={-1}
-                />
-              </BaseLayer>
               <BaseLayer name='Swedish'>
                 <TileLayer
                   url='https://cdn.digitransit.fi/map/v1/{id}/{z}/{x}/{y}@2x.png'
@@ -94,49 +50,11 @@ const InteractiveMap = props => {
                   id='hsl-map-sv'
                 />
               </BaseLayer>
-              <BaseLayer name='Mapbox Satellite'>
-                <TileLayer
-                  url={`https://api.mapbox.com/v4/{id}/{z}/{x}/{y}@2x.jpg90?access_token=${ACCESS_TOKEN}`}
-                  attribution='© <a href="https://apps.mapbox.com/feedback/">Mapbox</a> © <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-                  maxZoom={19}
-                  tileSize={512}
-                  zoomOffset={-1}
-                  id='mapbox.satellite'
-                />
-              </BaseLayer>
-              <BaseLayer name='Mapbox Streets'>
-                <TileLayer
-                  url={`https://api.mapbox.com/styles/v1/mapbox/streets-v11/tiles/{z}/{x}/{y}?access_token=${ACCESS_TOKEN}`}
-                  attribution='© <a href="https://apps.mapbox.com/feedback/">Mapbox</a> © <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-                  maxZoom={19}
-                  tileSize={512}
-                  zoomOffset={-1}
-                />
-              </BaseLayer>
-              <BaseLayer name='Mapbox Dark'>
-                <TileLayer
-                  url={`https://api.mapbox.com/styles/v1/mapbox/dark-v10/tiles/{z}/{x}/{y}?access_token=${ACCESS_TOKEN}`}
-                  attribution='© <a href="https://apps.mapbox.com/feedback/">Mapbox</a> © <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-                  maxZoom={19}
-                  tileSize={512}
-                  zoomOffset={-1}
-                />
-              </BaseLayer>
-              <BaseLayer name='Mapbox Light'>
-                <TileLayer
-                  url={`https://api.mapbox.com/styles/v1/mapbox/light-v10/tiles/{z}/{x}/{y}?access_token=${ACCESS_TOKEN}`}
-                  attribution='© <a href="https://apps.mapbox.com/feedback/">Mapbox</a> © <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-                  maxZoom={19}
-                  tileSize={512}
-                  zoomOffset={-1}
-                />
-              </BaseLayer>
-              {/* Creating a marker for every given place */}
               {places.map((item, index) => {
                 return (
                   <Marker position={[item.lat, item.lon]} key={index}>
                     <Popup>
-                      <MapMarker />
+                      <MapMarker place={item} />
                     </Popup>
                   </Marker>
                 );
