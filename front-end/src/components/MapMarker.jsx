@@ -22,29 +22,27 @@ const MapMarker = props => {
     event.preventDefault();
   };
   return (
-    <React.Fragment>
-      <Grid container className={classes.container} spacing={2}>
-        <Grid item>
-          <Typography>
-            {place.name}
-            <br />
-            {place.address}
-            <br />
-            {place.phone}
-          </Typography>
-        </Grid>
-        <Grid item>
-          <Button variant='contained' onClick={handleHelp}>
-            Haluan auttaa!
-          </Button>
-        </Grid>
-        <Grid item>
-          <Button variant='contained' onClick={handleFood}>
-            Haluan ruokaa!
-          </Button>
-        </Grid>
+    <Grid container className={classes.container} spacing={2}>
+      <Grid item>
+        <Typography>
+          {place.name}
+          <br />
+          {place.address}
+          <br />
+          {place.phone}
+        </Typography>
       </Grid>
-    </React.Fragment>
+      <Grid item>
+        <Button variant='contained' onClick={handleHelp}>
+          Haluan auttaa!
+        </Button>
+      </Grid>
+      <Grid item>
+        <Button variant='contained' onClick={handleFood}>
+          Haluan ruokaa!
+        </Button>
+      </Grid>
+    </Grid>
   );
 };
 

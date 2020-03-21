@@ -1,32 +1,46 @@
 import React from 'react';
-import Typography from '@material-ui/core/Typography';
-import './App.css';
-import Map from './components/Map';
-import { withStyles } from '@material-ui/core/styles';
+import { Map, TileLayer, Marker, Popup, LayersControl } from 'react-leaflet';
+import './map.css';
+import MapMarker from './components/MapMarker';
+import places from './places.json';
+const { BaseLayer } = LayersControl;
 
-const styles = theme => ({
-  header: {
-    marginTop: theme.spacing(6),
-    padding: theme.spacing(2),
-    justifyContent: 'center',
-    alignItems: 'center'
-  }
-});
-
-const App = props => {
-  const { classes } = props;
+const App = () => {
   return (
-    <div className='App'>
-      <header className='App-header'>
-        <Typography variant='h6' className={classes.header}>
-          Tarvitsetko ruoka-apua tai haluatko auttaa heikommassa asemassa
-          olevia? Saat tarkempia tietoja ruoanjakelusta painamalla kartalla
-          näkyviä merkkejä.
-        </Typography>
-        <Map />
-      </header>
-    </div>
+    <Map center={[places[0].lat, places[0].lon]} zoom={13}>
+      <LayersControl position='topright'>
+        <BaseLayer checked name='Digitransit'>
+          <TileLayer
+            url='https://cdn.digitransit.fi/map/v1/{id}/{z}/{x}/{y}@2x.png'
+            attribution='Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>'
+            maxZoom={19}
+            tileSize={512}
+            zoomOffset={-1}
+            id='hsl-map'
+          />
+        </BaseLayer>
+        <BaseLayer name='Swedish'>
+          <TileLayer
+            url='https://cdn.digitransit.fi/map/v1/{id}/{z}/{x}/{y}@2x.png'
+            attribution='Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>'
+            maxZoom={19}
+            tileSize={512}
+            zoomOffset={-1}
+            id='hsl-map-sv'
+          />
+        </BaseLayer>
+        {places.map((item, index) => {
+          return (
+            <Marker position={[item.lat, item.lon]} key={index}>
+              <Popup>
+                <MapMarker place={item} />
+              </Popup>
+            </Marker>
+          );
+        })}
+      </LayersControl>
+    </Map>
   );
 };
 
-export default withStyles(styles)(App);
+export default App;
