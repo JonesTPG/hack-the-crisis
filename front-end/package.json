@@ -12,6 +12,7 @@
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-leaflet": "^2.6.3",
+    "react-leaflet-fullscreen-control": "0.0.4",
     "react-scripts": "3.4.0"
   },
   "scripts": {
