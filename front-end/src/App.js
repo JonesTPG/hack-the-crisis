@@ -3,12 +3,11 @@ import { Map, TileLayer, Marker, Popup, LayersControl } from "react-leaflet";
 import "./map.css";
 import MapMarker from "./components/MapMarker";
 import places from "./places.json";
-import "react-leaflet-fullscreen-control";
 const { BaseLayer } = LayersControl;
 
 const App = () => {
   return (
-    <Map center={[places[0].lat, places[0].lon]} zoom={13} fullscreenControl>
+    <Map center={[places[0].lat, places[0].lon]} zoom={13}>
       <LayersControl position="topright">
         <BaseLayer checked name="Digitransit">
           <TileLayer
