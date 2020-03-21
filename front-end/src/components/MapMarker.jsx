@@ -17,11 +17,9 @@ const MapMarker = props => {
 
   const handleFood = event => {
     event.preventDefault();
-    console.log('Etsitään ruokaa...');
   };
   const handleHelp = event => {
     event.preventDefault();
-    console.log('Autetaan...');
   };
   return (
     <React.Fragment>
