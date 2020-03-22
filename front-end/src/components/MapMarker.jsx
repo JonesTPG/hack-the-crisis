@@ -36,7 +36,7 @@ const MapMarker = props => {
         </Typography>
       </Grid>
       <Grid item>
-        <Link href={place.url}>
+        <Link href={place.url} target='_blank'>
           <Button variant='contained' className={classes.helpButton}>
             Haluan auttaa!
           </Button>
