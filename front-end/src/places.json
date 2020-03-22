@@ -2,36 +2,17 @@
   {
     "name": "Ravintola X",
     "address": "Esimerkkitie X",
-    "phone": 351161561613,
+    "phone": 7543677,
     "lat": 60.169392,
-    "lon": 24.925751
+    "lon": 24.925751,
+    "url": "https://ruokalahjoitus.kooditaiturit.fi/tuote/ravintola-x/"
   },
   {
-    "name": "Ravintola X",
-    "address": "Esimerkkitie X",
-    "phone": 351161561613,
+    "name": "Ravintola Y",
+    "address": "Esimerkkitie Y",
+    "phone": 5723677,
     "lat": 61.44982,
-    "lon": 23.85863
-  },
-  {
-    "name": "Ravintola X",
-    "address": "Esimerkkitie X",
-    "phone": 351161561613,
-    "lat": 60.168499,
-    "lon": 24.93248
-  },
-  {
-    "name": "Ravintola X",
-    "address": "Esimerkkitie X",
-    "phone": 351161561613,
-    "lat": 65.012093,
-    "lon": 25.465076
-  },
-  {
-    "name": "Ravintola X",
-    "address": "Esimerkkitie X",
-    "phone": 351161561613,
-    "lat": 60.314707,
-    "lon": 24.948027
+    "lon": 23.85863,
+    "url": "https://ruokalahjoitus.kooditaiturit.fi/tuote/ravintola-y/"
   }
 ]
